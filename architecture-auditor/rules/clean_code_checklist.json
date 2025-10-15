@@ -1,0 +1,166 @@
+{
+  "clean_code_checklist": {
+    "nombres_significativos": {
+      "items": [
+        "¿Los nombres revelan la intención del código?",
+        "¿Se evita la desinformación en los nombres?",
+        "¿Se hacen distinciones significativas?",
+        "¿Los nombres son pronunciables?",
+        "¿Los nombres son buscables?",
+        "¿Se evitan las codificaciones (prefijos/sufijos)?",
+        "¿Las clases usan sustantivos?",
+        "¿Los métodos usan verbos?",
+        "¿Se usa una palabra por concepto?",
+        "¿Se usan nombres del dominio del problema?"
+      ],
+      "weight": 15
+    },
+    "funciones": {
+      "items": [
+        "¿Las funciones son pequeñas (máx 20 líneas)?",
+        "¿Cada función hace una sola cosa?",
+        "¿Hay un solo nivel de abstracción por función?",
+        "¿Los nombres de función son descriptivos?",
+        "¿Las funciones tienen pocos argumentos (máx 3)?",
+        "¿Se evitan los argumentos booleanos?",
+        "¿Las funciones no tienen efectos secundarios?",
+        "¿Se separan comandos de consultas?",
+        "¿Se usan excepciones en lugar de códigos de error?",
+        "¿Los bloques try/catch están extraídos?"
+      ],
+      "weight": 20
+    },
+    "comentarios": {
+      "items": [
+        "¿Se expresa la intención en código, no en comentarios?",
+        "¿Los comentarios explican el 'por qué', no el 'qué'?",
+        "¿Se evitan comentarios redundantes?",
+        "¿No hay código comentado?",
+        "¿Los comentarios están actualizados?",
+        "¿Se evitan comentarios de ruido?",
+        "¿Los TODO están justificados?",
+        "¿No hay comentarios mandatorios innecesarios?"
+      ],
+      "weight": 10
+    },
+    "formato": {
+      "items": [
+        "¿El formato comunica profesionalismo?",
+        "¿Los archivos tienen tamaño apropiado (máx 500 líneas)?",
+        "¿Se usa espaciado vertical para separar conceptos?",
+        "¿Las variables están cerca de su uso?",
+        "¿Las funciones dependientes están cerca?",
+        "¿Las líneas no son muy largas (máx 120 chars)?",
+        "¿Se usa indentación consistente?",
+        "¿Se usa espaciado horizontal apropiado?"
+      ],
+      "weight": 10
+    },
+    "objetos_estructuras": {
+      "items": [
+        "¿Se respeta la Ley de Demeter?",
+        "¿Se distingue entre objetos y estructuras de datos?",
+        "¿Se evitan híbridos objeto/estructura?",
+        "¿Los DTOs están bien definidos?",
+        "¿Los objetos ocultan datos y exponen funciones?",
+        "¿Las estructuras exponen datos sin funciones complejas?"
+      ],
+      "weight": 10
+    },
+    "manejo_errores": {
+      "items": [
+        "¿Se usan excepciones en lugar de códigos de retorno?",
+        "¿Se usa try-catch-finally apropiadamente?",
+        "¿Se usan excepciones no verificadas?",
+        "¿Las excepciones proveen contexto?",
+        "¿Las clases de excepción están bien definidas?",
+        "¿Se define flujo normal con Special Case Pattern?",
+        "¿No se retorna null?",
+        "¿No se pasa null como argumento?"
+      ],
+      "weight": 10
+    },
+    "tests_unitarios": {
+      "items": [
+        "¿Se siguen las tres leyes del TDD?",
+        "¿Los tests están limpios?",
+        "¿Los tests son legibles?",
+        "¿Se usa patrón Build-Operate-Check?",
+        "¿Se minimiza el número de asserts por test?",
+        "¿Cada test prueba un solo concepto?",
+        "¿Los tests son FIRST (Fast, Independent, Repeatable, Self-validating, Timely)?"
+      ],
+      "weight": 15
+    },
+    "clases": {
+      "items": [
+        "¿Las clases están bien organizadas?",
+        "¿Se mantiene la encapsulación?",
+        "¿Las clases son pequeñas?",
+        "¿Se respeta el Principio de Responsabilidad Única?",
+        "¿Las clases tienen alta cohesión?",
+        "¿Mantener cohesión resulta en clases pequeñas?"
+      ],
+      "weight": 15
+    },
+    "sistemas": {
+      "items": [
+        "¿Se separa construcción de uso?",
+        "¿El sistema puede escalar incrementalmente?",
+        "¿Se usan estándares cuando agregan valor?",
+        "¿Se usan patrones apropiados (Factory, Builder, DI)?"
+      ],
+      "weight": 5
+    },
+    "emergencia": {
+      "items": [
+        "¿El sistema ejecuta todos los tests?",
+        "¿No contiene duplicación?",
+        "¿Expresa la intención del programador?",
+        "¿Minimiza número de clases y métodos?",
+        "¿El código es expresivo y claro?",
+        "¿Se eliminó toda duplicación innecesaria?"
+      ],
+      "weight": 10
+    }
+  },
+  "scoring": {
+    "excellent": "90-100",
+    "good": "70-89", 
+    "acceptable": "50-69",
+    "poor": "30-49",
+    "critical": "0-29"
+  },
+  "recommendations_by_score": {
+    "critical": [
+      "Refactorización completa necesaria",
+      "Aplicar principios básicos de Clean Code",
+      "Establecer estándares de codificación",
+      "Implementar revisiones de código obligatorias"
+    ],
+    "poor": [
+      "Mejorar nombres de variables y funciones",
+      "Reducir tamaño de funciones y clases",
+      "Implementar manejo apropiado de errores",
+      "Agregar tests unitarios"
+    ],
+    "acceptable": [
+      "Optimizar estructura de clases",
+      "Mejorar comentarios y documentación",
+      "Aplicar patrones de diseño apropiados",
+      "Incrementar cobertura de tests"
+    ],
+    "good": [
+      "Refinamiento de detalles",
+      "Optimización de performance",
+      "Documentación avanzada",
+      "Mentoring a otros desarrolladores"
+    ],
+    "excellent": [
+      "Mantener estándares actuales",
+      "Compartir mejores prácticas",
+      "Liderar iniciativas de calidad",
+      "Contribuir a estándares del equipo"
+    ]
+  }
+}

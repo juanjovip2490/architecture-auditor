@@ -1,0 +1,309 @@
+{
+  "clean_code_principles": {
+    "nombres_significativos": {
+      "usar_nombres_que_revelen_intencion": {
+        "description": "Los nombres deben revelar la intención del código",
+        "examples": ["getUserById", "calculateTotalPrice", "isValidEmail"],
+        "avoid": ["d", "temp", "data", "info"]
+      },
+      "evitar_desinformacion": {
+        "description": "No usar nombres que confundan o desinformen",
+        "avoid": ["accountList", "hp", "aix", "sco"]
+      },
+      "hacer_distinciones_significativas": {
+        "description": "Evitar nombres similares sin diferencia clara",
+        "avoid": ["ProductInfo vs ProductData", "a1 vs a2"]
+      },
+      "usar_nombres_pronunciables": {
+        "description": "Los nombres deben ser pronunciables",
+        "good": ["generationTimestamp", "modificationDate"],
+        "bad": ["genymdhms", "modymdhms"]
+      },
+      "usar_nombres_buscables": {
+        "description": "Usar nombres que se puedan buscar fácilmente",
+        "good": ["MAX_CLASSES_PER_STUDENT"],
+        "bad": ["7", "e"]
+      },
+      "evitar_codificaciones": {
+        "description": "No usar prefijos o sufijos innecesarios",
+        "avoid": ["strName", "iCount", "m_desc"]
+      },
+      "nombres_de_clases": {
+        "rule": "Usar sustantivos o frases de sustantivos",
+        "good": ["Customer", "WikiPage", "Account"],
+        "bad": ["Manager", "Processor", "Data"]
+      },
+      "nombres_de_metodos": {
+        "rule": "Usar verbos o frases de verbos",
+        "good": ["postPayment", "deletePage", "save"],
+        "accessors": "get + nombre",
+        "mutators": "set + nombre",
+        "predicates": "is + condicion"
+      },
+      "una_palabra_por_concepto": {
+        "description": "Usar una palabra consistente por concepto abstracto",
+        "example": "Usar siempre 'fetch', 'retrieve' o 'get', no mezclar"
+      },
+      "usar_nombres_del_dominio": {
+        "description": "Usar terminología del dominio del problema",
+        "prefer": "Nombres del dominio del problema > Nombres técnicos"
+      }
+    },
+    "funciones": {
+      "pequenas": {
+        "max_lines": 20,
+        "ideal_lines": "4-6 líneas",
+        "description": "Las funciones deben ser pequeñas"
+      },
+      "hacer_una_cosa": {
+        "description": "Las funciones deben hacer una sola cosa y hacerla bien",
+        "rule": "Una función debe tener un solo nivel de abstracción"
+      },
+      "un_nivel_de_abstraccion": {
+        "description": "Todas las instrucciones deben estar al mismo nivel",
+        "rule": "Regla descendente: leer código de arriba hacia abajo"
+      },
+      "nombres_descriptivos": {
+        "description": "Usar nombres largos y descriptivos",
+        "good": ["includeSetupAndTeardownPages", "isTestable"],
+        "principle": "Un nombre largo y descriptivo es mejor que uno corto y enigmático"
+      },
+      "argumentos_de_funcion": {
+        "ideal": 0,
+        "acceptable": 1,
+        "avoid_if_possible": 2,
+        "never": "3 o más",
+        "monadic_forms": ["pregunta sobre argumento", "transformación", "evento"],
+        "flag_arguments": "Evitar argumentos booleanos"
+      },
+      "efectos_secundarios": {
+        "description": "Las funciones no deben tener efectos secundarios ocultos",
+        "rule": "Hacer lo que el nombre promete y nada más"
+      },
+      "separacion_comando_consulta": {
+        "description": "Las funciones deben hacer algo o responder algo, no ambos",
+        "rule": "Separar comandos de consultas"
+      },
+      "usar_excepciones": {
+        "description": "Usar excepciones en lugar de códigos de error",
+        "benefit": "Separa el código de manejo de errores del código principal"
+      },
+      "extraer_bloques_try_catch": {
+        "description": "Extraer cuerpos de try/catch a funciones separadas",
+        "rule": "El manejo de errores es una cosa"
+      }
+    },
+    "comentarios": {
+      "principio_general": {
+        "description": "Los comentarios no compensan el código malo",
+        "rule": "Expresarse en código, no en comentarios"
+      },
+      "comentarios_buenos": {
+        "legales": "Copyright, licencias",
+        "informativos": "Explicar valor de retorno de regex",
+        "explicacion_intencion": "Por qué se tomó una decisión",
+        "clarificacion": "Traducir argumentos oscuros",
+        "advertencia": "Advertir sobre consecuencias",
+        "todo": "Recordatorios de trabajo pendiente",
+        "amplificacion": "Amplificar importancia de algo"
+      },
+      "comentarios_malos": {
+        "murmullo": "Comentarios obligatorios sin valor",
+        "redundantes": "Repetir lo que hace el código",
+        "misleading": "Comentarios que mienten",
+        "mandatorios": "Comentarios requeridos por reglas",
+        "diario": "Comentarios de bitácora",
+        "ruido": "Comentarios obvios",
+        "posicion": "Marcadores de posición",
+        "codigo_comentado": "Nunca dejar código comentado"
+      }
+    },
+    "formato": {
+      "proposito": {
+        "description": "El formato comunica profesionalismo",
+        "importance": "El código bien formateado es más fácil de leer"
+      },
+      "formato_vertical": {
+        "tamano_archivo": "200 líneas típico, 500 máximo",
+        "metafora_periodico": "Nombre -> sinopsis -> detalles",
+        "espaciado_vertical": "Separar conceptos con líneas en blanco",
+        "densidad_vertical": "Líneas relacionadas deben aparecer juntas",
+        "distancia_vertical": "Variables cerca de su uso",
+        "variables_locales": "Declarar en la parte superior de función",
+        "variables_instancia": "Declarar en la parte superior de clase",
+        "funciones_dependientes": "Cerca una de otra"
+      },
+      "formato_horizontal": {
+        "tamano_linea": "120 caracteres máximo",
+        "espaciado_horizontal": "Usar espacios para asociar/disociar",
+        "alineacion_horizontal": "No alinear declaraciones",
+        "indentacion": "Usar indentación consistente"
+      }
+    },
+    "objetos_estructuras_datos": {
+      "ley_demeter": {
+        "description": "Un objeto no debe conocer los internos de otros objetos",
+        "rule": "Un método M de objeto O solo debe llamar métodos de:",
+        "allowed": ["O mismo", "Parámetros de M", "Objetos creados en M", "Componentes directos de O"]
+      },
+      "objetos_vs_estructuras": {
+        "objetos": "Ocultan datos, exponen funciones",
+        "estructuras_datos": "Exponen datos, no tienen funciones significativas",
+        "hibridos": "Evitar híbridos que hacen ambas cosas"
+      },
+      "dto": {
+        "description": "Data Transfer Objects - estructuras con variables públicas",
+        "use_case": "Comunicación con bases de datos, parsing de mensajes"
+      }
+    },
+    "manejo_errores": {
+      "usar_excepciones": {
+        "description": "Usar excepciones en lugar de códigos de retorno",
+        "benefit": "Separa lógica de negocio del manejo de errores"
+      },
+      "try_catch_finally": {
+        "description": "Usar try-catch-finally para definir scope de transacciones",
+        "rule": "Escribir try-catch-finally primero"
+      },
+      "excepciones_no_verificadas": {
+        "description": "Usar excepciones no verificadas",
+        "reason": "Las verificadas violan principio abierto/cerrado"
+      },
+      "contexto_excepciones": {
+        "description": "Proveer contexto con excepciones",
+        "include": "Operación que falló y tipo de falla"
+      },
+      "clases_excepcion": {
+        "description": "Definir clases de excepción según necesidades del llamador",
+        "pattern": "Wrapper pattern para APIs de terceros"
+      },
+      "flujo_normal": {
+        "description": "Definir flujo normal usando Special Case Pattern",
+        "benefit": "El código cliente no maneja casos excepcionales"
+      },
+      "no_retornar_null": {
+        "description": "No retornar null",
+        "alternatives": ["Lanzar excepción", "Retornar objeto especial"]
+      },
+      "no_pasar_null": {
+        "description": "No pasar null como argumento",
+        "reason": "Causa NullPointerException"
+      }
+    },
+    "limites": {
+      "usar_codigo_terceros": {
+        "description": "Usar código de terceros de manera controlada",
+        "pattern": "Learning tests para entender APIs"
+      },
+      "learning_tests": {
+        "description": "Escribir tests para aprender APIs de terceros",
+        "benefit": "Verificar que la API funciona como esperamos"
+      },
+      "usar_codigo_inexistente": {
+        "description": "Definir interfaces para código que no existe aún",
+        "pattern": "Adapter pattern para integrar cuando esté listo"
+      }
+    },
+    "tests_unitarios": {
+      "tres_leyes_tdd": {
+        "primera": "No escribir código de producción hasta tener test que falle",
+        "segunda": "No escribir más test del necesario para fallar",
+        "tercera": "No escribir más código del necesario para pasar el test"
+      },
+      "mantener_tests_limpios": {
+        "description": "El código de test es tan importante como el de producción",
+        "rule": "Tests sucios = código de producción sucio"
+      },
+      "que_hace_limpio_test": {
+        "legibilidad": "Claridad, simplicidad, densidad de expresión",
+        "pattern": "Build-Operate-Check pattern",
+        "given_when_then": "Dado-Cuando-Entonces"
+      },
+      "un_assert_por_test": {
+        "description": "Minimizar asserts por test",
+        "alternative": "Template Method pattern para múltiples asserts"
+      },
+      "concepto_unico_por_test": {
+        "description": "Cada test debe probar un solo concepto",
+        "rule": "No mezclar conceptos en un test"
+      },
+      "first": {
+        "fast": "Los tests deben ser rápidos",
+        "independent": "Los tests no deben depender unos de otros",
+        "repeatable": "Los tests deben ser repetibles en cualquier ambiente",
+        "self_validating": "Los tests deben tener salida booleana",
+        "timely": "Los tests deben escribirse justo antes del código de producción"
+      }
+    },
+    "clases": {
+      "organizacion_clase": {
+        "order": ["constantes públicas", "variables privadas", "funciones públicas", "funciones privadas"],
+        "rule": "Seguir convención descendente"
+      },
+      "encapsulacion": {
+        "description": "Mantener variables y funciones privadas",
+        "exception": "Solo hacer público lo necesario para tests"
+      },
+      "clases_pequenas": {
+        "description": "Las clases deben ser pequeñas",
+        "measure": "Número de responsabilidades, no líneas",
+        "rule": "Principio de Responsabilidad Única"
+      },
+      "principio_responsabilidad_unica": {
+        "description": "Una clase debe tener una sola razón para cambiar",
+        "benefit": "Clases más organizadas y fáciles de encontrar"
+      },
+      "cohesion": {
+        "description": "Las clases deben tener alta cohesión",
+        "rule": "Métodos deben manipular una o más variables de instancia",
+        "goal": "Cada variable usada por cada método = máxima cohesión"
+      },
+      "mantener_cohesion_pequenas": {
+        "description": "Mantener cohesión resulta en clases pequeñas",
+        "process": "Extraer funciones grandes crea más clases pequeñas"
+      }
+    },
+    "sistemas": {
+      "separar_construccion_uso": {
+        "description": "Separar construcción del sistema de su uso",
+        "patterns": ["Abstract Factory", "Builder", "Dependency Injection"]
+      },
+      "escalar": {
+        "description": "Los sistemas de software pueden crecer incrementalmente",
+        "rule": "Implementar solo lo necesario hoy, escalar mañana"
+      },
+      "usar_estandares": {
+        "description": "Usar estándares cuando agregan valor demostrable",
+        "warning": "No usar estándares por el simple hecho de usarlos"
+      }
+    },
+    "emergencia": {
+      "reglas_diseno_simple": {
+        "orden_importancia": [
+          "Ejecuta todos los tests",
+          "No contiene duplicación",
+          "Expresa la intención del programador",
+          "Minimiza número de clases y métodos"
+        ]
+      },
+      "ejecutar_tests": {
+        "description": "Sistema debe ser completamente testeable",
+        "benefit": "Sistemas testeables tienen mejor diseño"
+      },
+      "no_duplicacion": {
+        "description": "La duplicación es enemiga de un sistema bien diseñado",
+        "techniques": ["Extract Method", "Template Method pattern"]
+      },
+      "expresividad": {
+        "description": "El código debe expresar claramente la intención",
+        "methods": ["Buenos nombres", "Funciones pequeñas", "Patrones estándar", "Tests unitarios"]
+      },
+      "clases_metodos_minimos": {
+        "description": "Minimizar número de clases y métodos",
+        "priority": "Menor prioridad que las otras reglas"
+      }
+    }
+  },
+  "github_clean_code_reference": "https://github.com/Ajguerrap/codigo-limpio",
+  "source": "Clean Code: A Handbook of Agile Software Craftsmanship - Robert C. Martin"
+}

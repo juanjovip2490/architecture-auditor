@@ -1,0 +1,67 @@
+name: Build and Publish (Windows/macOS)
+
+on:
+  push:
+    branches: [ master ]
+  release:
+    types: [ created, published ]
+  workflow_dispatch:
+
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        os: [ macos-latest, windows-latest ]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 18.x
+
+    # macOS specific display setup
+    - name: Configure macOS Display
+      if: runner.os == 'macOS'
+      run: |
+        brew install --cask xquartz
+        /opt/X11/bin/Xvfb :99 -ac -screen 0 1024x768x8 &
+        echo "DISPLAY=:99" >> $GITHUB_ENV
+
+    - name: Install Dependencies
+      run: npm ci
+
+    - name: Configure VS Code
+      run: |
+        mkdir -p ~/.vscode
+        echo '{ "disable-hardware-acceleration": true }' > ~/.vscode/argv.json
+
+    - name: Run Tests
+      run: npm test
+
+  publish:
+    needs: test
+    runs-on: windows-latest
+    if: startsWith(github.ref, 'refs/tags/')
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 18.x
+
+    - name: Install Deps
+      run: npm ci; npm install -g @vscode/vsce
+
+    - name: Package Extension
+      run: vsce package
+
+    - name: Publish to Marketplace
+      run: npm run deploy
+      env:
+        VSCE_PAT: ${{ secrets.VSCE_PAT }}

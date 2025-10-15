@@ -1,0 +1,84 @@
+{
+  "project_types": {
+    "web_app": {
+      "name": "Aplicación Web",
+      "required_structure": ["src/", "static/", "templates/", "tests/"],
+      "recommended_patterns": ["MVC", "Repository", "Dependency Injection"],
+      "frameworks": ["Flask", "Django", "FastAPI"],
+      "score_weights": {
+        "structure": 0.3,
+        "clean_code": 0.25,
+        "architecture": 0.25,
+        "design_patterns": 0.2
+      }
+    },
+    "api_rest": {
+      "name": "API REST",
+      "required_structure": ["src/", "routes/", "models/", "tests/"],
+      "recommended_patterns": ["Clean Architecture", "Repository", "Factory"],
+      "frameworks": ["FastAPI", "Flask-RESTful", "Django REST"],
+      "score_weights": {
+        "structure": 0.25,
+        "clean_code": 0.3,
+        "architecture": 0.3,
+        "design_patterns": 0.15
+      }
+    },
+    "microservice": {
+      "name": "Microservicio",
+      "required_structure": ["src/", "api/", "domain/", "infrastructure/", "tests/"],
+      "recommended_patterns": ["Hexagonal", "CQRS", "Event Sourcing"],
+      "frameworks": ["FastAPI", "Flask", "Quart"],
+      "score_weights": {
+        "structure": 0.2,
+        "clean_code": 0.25,
+        "architecture": 0.4,
+        "design_patterns": 0.15
+      }
+    },
+    "desktop_app": {
+      "name": "Aplicación de Escritorio",
+      "required_structure": ["src/", "ui/", "models/", "controllers/", "tests/"],
+      "recommended_patterns": ["MVP", "MVVM", "Observer"],
+      "frameworks": ["Tkinter", "PyQt", "Kivy"],
+      "score_weights": {
+        "structure": 0.3,
+        "clean_code": 0.25,
+        "architecture": 0.25,
+        "design_patterns": 0.2
+      }
+    },
+    "data_science": {
+      "name": "Proyecto de Ciencia de Datos",
+      "required_structure": ["notebooks/", "src/", "data/", "models/", "tests/"],
+      "recommended_patterns": ["Pipeline", "Strategy", "Template Method"],
+      "frameworks": ["Pandas", "Scikit-learn", "TensorFlow"],
+      "score_weights": {
+        "structure": 0.35,
+        "clean_code": 0.3,
+        "architecture": 0.2,
+        "design_patterns": 0.15
+      }
+    },
+    "library": {
+      "name": "Librería/Paquete",
+      "required_structure": ["src/", "tests/", "docs/", "examples/"],
+      "recommended_patterns": ["Factory", "Builder", "Facade"],
+      "frameworks": ["setuptools", "poetry"],
+      "score_weights": {
+        "structure": 0.25,
+        "clean_code": 0.35,
+        "architecture": 0.2,
+        "design_patterns": 0.2
+      }
+    }
+  },
+  "detection_rules": {
+    "web_app": ["app.py", "wsgi.py", "templates/", "static/"],
+    "api_rest": ["api/", "routes/", "endpoints/", "swagger"],
+    "microservice": ["docker", "kubernetes", "service", "gateway"],
+    "desktop_app": ["main.py", "gui/", "ui/", "window"],
+    "data_science": ["jupyter", "notebook", "data/", "models/"],
+    "library": ["setup.py", "pyproject.toml", "__init__.py"]
+  }
+}

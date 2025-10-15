@@ -1,0 +1,102 @@
+{
+  "architecture_patterns": {
+    "mvc": {
+      "name": "Model-View-Controller",
+      "indicators": ["models/", "views/", "controllers/", "mvc"],
+      "score_weight": 25,
+      "benefits": ["Separación de responsabilidades", "Mantenibilidad", "Testabilidad"]
+    },
+    "mvp": {
+      "name": "Model-View-Presenter",
+      "indicators": ["presenters/", "mvp"],
+      "score_weight": 25,
+      "benefits": ["Testabilidad mejorada", "Lógica de presentación separada"]
+    },
+    "mvvm": {
+      "name": "Model-View-ViewModel",
+      "indicators": ["viewmodels/", "mvvm"],
+      "score_weight": 25,
+      "benefits": ["Binding bidireccional", "Separación UI-lógica"]
+    },
+    "layered": {
+      "name": "Arquitectura en Capas",
+      "indicators": ["layers/", "presentation/", "business/", "data/"],
+      "score_weight": 20,
+      "benefits": ["Organización clara", "Reutilización"]
+    },
+    "hexagonal": {
+      "name": "Arquitectura Hexagonal",
+      "indicators": ["ports/", "adapters/", "domain/", "infrastructure/"],
+      "score_weight": 30,
+      "benefits": ["Independencia de frameworks", "Testabilidad alta"]
+    },
+    "clean_architecture": {
+      "name": "Clean Architecture",
+      "indicators": ["entities/", "use_cases/", "interfaces/", "frameworks/"],
+      "score_weight": 35,
+      "benefits": ["Independencia total", "Reglas de negocio puras"]
+    },
+    "microservices": {
+      "name": "Microservicios",
+      "indicators": ["services/", "api/", "gateway/", "docker"],
+      "score_weight": 30,
+      "benefits": ["Escalabilidad", "Despliegue independiente"]
+    },
+    "repository": {
+      "name": "Repository Pattern",
+      "indicators": ["repository", "repositories/", "repo"],
+      "score_weight": 15,
+      "benefits": ["Abstracción de datos", "Testabilidad"]
+    },
+    "dependency_injection": {
+      "name": "Inyección de Dependencias",
+      "indicators": ["inject", "di", "container", "ioc"],
+      "score_weight": 20,
+      "benefits": ["Bajo acoplamiento", "Testabilidad"]
+    }
+  },
+  "design_patterns": {
+    "creational": {
+      "singleton": {
+        "indicators": ["__new__", "instance", "_instance"],
+        "score": 10
+      },
+      "factory": {
+        "indicators": ["factory", "create", "Factory"],
+        "score": 15
+      },
+      "builder": {
+        "indicators": ["builder", "Builder", "build"],
+        "score": 15
+      }
+    },
+    "structural": {
+      "adapter": {
+        "indicators": ["adapter", "Adapter"],
+        "score": 10
+      },
+      "decorator": {
+        "indicators": ["@", "decorator", "Decorator"],
+        "score": 15
+      },
+      "facade": {
+        "indicators": ["facade", "Facade"],
+        "score": 10
+      }
+    },
+    "behavioral": {
+      "observer": {
+        "indicators": ["observer", "notify", "subscribe"],
+        "score": 15
+      },
+      "strategy": {
+        "indicators": ["strategy", "Strategy"],
+        "score": 15
+      },
+      "command": {
+        "indicators": ["command", "Command", "execute"],
+        "score": 15
+      }
+    }
+  }
+}

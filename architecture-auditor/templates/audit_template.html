@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte de Auditoría - {{project_name}}</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .header { text-align: center; border-bottom: 2px solid #3498db; padding-bottom: 20px; margin-bottom: 30px; }
+        .score-card { display: inline-block; margin: 10px; padding: 20px; border-radius: 8px; text-align: center; min-width: 150px; }
+        .score-excellent { background: #2ecc71; color: white; }
+        .score-good { background: #f39c12; color: white; }
+        .score-poor { background: #e74c3c; color: white; }
+        .section { margin: 30px 0; }
+        .section h2 { color: #2c3e50; border-left: 4px solid #3498db; padding-left: 15px; }
+        .recommendations { background: #ecf0f1; padding: 20px; border-radius: 8px; }
+        .priority-high { border-left: 4px solid #e74c3c; }
+        .priority-medium { border-left: 4px solid #f39c12; }
+        .priority-low { border-left: 4px solid #27ae60; }
+        ul { list-style-type: none; padding: 0; }
+        li { margin: 10px 0; padding: 10px; background: #f8f9fa; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏗️ Reporte de Auditoría de Arquitectura</h1>
+            <p><strong>Proyecto:</strong> {{project_name}}</p>
+            <p><strong>Fecha:</strong> {{timestamp}}</p>
+        </div>
+
+        <div class="section">
+            <h2>📊 Puntuaciones Generales</h2>
+            <div class="score-card {{structure_class}}">
+                <h3>Estructura</h3>
+                <div style="font-size: 2em;">{{structure_score}}/100</div>
+            </div>
+            <div class="score-card {{clean_code_class}}">
+                <h3>Código Limpio</h3>
+                <div style="font-size: 2em;">{{clean_code_score}}/100</div>
+            </div>
+            <div class="score-card {{architecture_class}}">
+                <h3>Arquitectura</h3>
+                <div style="font-size: 2em;">{{architecture_score}}/100</div>
+            </div>
+            <div class="score-card {{design_class}}">
+                <h3>Patrones</h3>
+                <div style="font-size: 2em;">{{design_score}}/100</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎯 Patrones Detectados</h2>
+            <ul>
+                {{#architecture_patterns}}
+                <li>✅ {{.}}</li>
+                {{/architecture_patterns}}
+                {{#design_patterns}}
+                <li>🎨 {{.}}</li>
+                {{/design_patterns}}
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>⚠️ Problemas Encontrados</h2>
+            <ul>
+                {{#issues}}
+                <li>❌ {{.}}</li>
+                {{/issues}}
+            </ul>
+        </div>
+
+        <div class="section recommendations">
+            <h2>💡 Recomendaciones</h2>
+            {{#recommendations}}
+            <div class="priority-{{priority_class}}" style="margin: 15px 0; padding: 15px; border-radius: 4px;">
+                <h4>[{{priority}}] {{category}}</h4>
+                <p>{{description}}</p>
+            </div>
+            {{/recommendations}}
+        </div>
+
+        <div class="section">
+            <h2>📚 Referencias</h2>
+            <ul>
+                <li><a href="https://github.com/Ajguerrap/codigo-limpio">Principios de Código Limpio</a></li>
+                <li><a href="https://refactoring.guru/design-patterns">Patrones de Diseño</a></li>
+                <li><a href="https://martinfowler.com/architecture/">Arquitectura de Software</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
