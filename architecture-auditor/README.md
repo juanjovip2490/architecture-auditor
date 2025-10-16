@@ -58,7 +58,15 @@ python audit_runner_simple.py ./mi-proyecto web_app
 
 ### Generar Reporte Completo
 ```bash
-python auditor_simple.py --project /ruta/del/proyecto --output reporte.json
+# Generar reporte JSON
+python auditor_clean.py --project /ruta/del/proyecto --output reporte.json
+
+# Generar reporte HTML visual
+python generate_html_report.py reporte.json reporte.html
+
+# Ejemplo completo
+python auditor_clean.py --project ./mi-proyecto --output audit.json
+python generate_html_report.py audit.json audit_report.html
 ```
 
 ## 📊 Métricas Evaluadas

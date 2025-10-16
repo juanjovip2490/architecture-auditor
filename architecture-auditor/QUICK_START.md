@@ -37,6 +37,19 @@ python auditor_simple.py --project /ruta/del/proyecto
 python audit_runner_simple.py /ruta/del/proyecto
 ```
 
+### Generar Reporte HTML Completo
+```bash
+# Generar reporte JSON
+python auditor_clean.py --project /ruta/del/proyecto --output reporte.json
+
+# Generar reporte HTML visual
+python generate_html_report.py reporte.json reporte.html
+
+# Flujo completo
+python audit_runner_clean.py /ruta/del/proyecto
+python generate_html_report.py audit_report_proyecto.json
+```
+
 ### Ejemplo Completo con Proyecto RAG
 ```bash
 # Clonar proyecto de ejemplo
