@@ -13,31 +13,52 @@ Sistema completo de auditoría para evaluar patrones de arquitectura, diseño y 
 
 ## 📦 Instalación
 
+### Desde GitHub
 ```bash
-git clone <este-repositorio>
-cd architecture-auditor
+git clone https://github.com/juanjovip2490/architecture-auditor.git
+cd architecture-auditor/architecture-auditor
+pip install -r requirements.txt
+```
+
+### Desde Azure DevOps
+```bash
+git clone https://dev.azure.com/tu-organizacion/tu-proyecto/_git/architecture-auditor
+cd architecture-auditor/architecture-auditor
+pip install -r requirements.txt
 ```
 
 ## 🎯 Uso Rápido
 
 ### Auditoría Básica
 ```bash
-python auditor.py --project /ruta/del/proyecto
+python auditor_simple.py --project /ruta/del/proyecto
 ```
 
-### Auditoría de Nuevo Proyecto (Recomendado)
+### Auditoría Inteligente (Recomendado)
 ```bash
-python audit_runner.py /ruta/del/proyecto
+python audit_runner_simple.py /ruta/del/proyecto
 ```
 
 ### Con Tipo Específico
 ```bash
-python audit_runner.py /ruta/del/proyecto web_app
+python audit_runner_simple.py /ruta/del/proyecto rag_app
 ```
 
-### Generar Reporte HTML
+### Ejemplo con Proyecto Clonado
 ```bash
-python auditor.py --project /ruta/del/proyecto --output reporte.json
+# Clonar proyecto a auditar
+git clone https://github.com/usuario/mi-proyecto.git
+
+# Ejecutar auditoría
+python audit_runner_simple.py ./mi-proyecto
+
+# O especificar tipo
+python audit_runner_simple.py ./mi-proyecto web_app
+```
+
+### Generar Reporte Completo
+```bash
+python auditor_simple.py --project /ruta/del/proyecto --output reporte.json
 ```
 
 ## 📊 Métricas Evaluadas
@@ -68,14 +89,14 @@ python auditor.py --project /ruta/del/proyecto --output reporte.json
 
 ## 🎨 Tipos de Proyecto Soportados
 
-| Tipo | Patrones Recomendados | Estructura |
-|------|----------------------|------------|
-| **Web App** | MVC, Repository, DI | src/, static/, templates/ |
-| **API REST** | Clean Architecture, Repository | src/, routes/, models/ |
-| **Microservicio** | Hexagonal, CQRS | src/, api/, domain/, infrastructure/ |
-| **Desktop App** | MVP, MVVM, Observer | src/, ui/, controllers/ |
-| **Data Science** | Pipeline, Strategy | notebooks/, src/, data/, models/ |
-| **Librería** | Factory, Builder, Facade | src/, tests/, docs/, examples/ |
+| Tipo | Patrones Recomendados | Estructura | Detección Automática |
+|------|----------------------|------------|---------------------|
+| **web_app** | MVC, Repository, Service Layer | src/, static/, templates/ | ✅ FastAPI, Flask, Django |
+| **api_rest** | Repository, Service Layer, DI | src/, routes/, models/ | ✅ API endpoints, REST |
+| **rag_app** | Factory, Repository, Service Layer | src/, data/, docs/ | ✅ LangChain, ChromaDB |
+| **microservice** | Hexagonal, CQRS, Repository | src/, docker/, k8s/ | ✅ Docker, Kubernetes |
+| **data_science** | Pipeline, Strategy | notebooks/, data/, models/ | ✅ Jupyter, Pandas |
+| **library** | Factory, Builder, Facade | src/, tests/, docs/ | ✅ setup.py, pyproject.toml |
 
 ## 📋 Ejemplo de Salida
 

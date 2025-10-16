@@ -20,20 +20,33 @@ chmod +x install.sh
 ### Instalación Manual
 ```bash
 git clone https://github.com/juanjovip2490/architecture-auditor.git
-cd architecture-auditor
-python auditor.py --project /ruta/tu/proyecto
+cd architecture-auditor/architecture-auditor
+pip install -r requirements.txt
+python auditor_simple.py --project /ruta/tu/proyecto
 ```
 
 ## Uso Inmediato
 
 ### Auditoría Básica
 ```bash
-audit --project /ruta/del/proyecto
+python auditor_simple.py --project /ruta/del/proyecto
 ```
 
 ### Auditoría Inteligente (Recomendado)
 ```bash
-audit-runner /ruta/del/proyecto
+python audit_runner_simple.py /ruta/del/proyecto
+```
+
+### Ejemplo Completo con Proyecto RAG
+```bash
+# Clonar proyecto de ejemplo
+git clone https://github.com/juanjovip2490/LOCAL-RAG-JJ.git
+
+# Auditar proyecto RAG
+python audit_runner_simple.py ./LOCAL-RAG-JJ
+
+# Resultado: Detecta automáticamente como 'rag_app'
+# y aplica recomendaciones específicas para RAG
 ```
 
 ### Ejemplo de Salida
@@ -62,13 +75,30 @@ audit-runner /ruta/del/proyecto
 - name: Architecture Audit
   run: |
     git clone https://github.com/juanjovip2490/architecture-auditor.git
-    python architecture-auditor/auditor.py --project .
+    cd architecture-auditor/architecture-auditor
+    pip install -r requirements.txt
+    python audit_runner_simple.py ../../
+```
+
+### Azure DevOps Pipeline
+```yaml
+- task: Bash@3
+  displayName: 'Architecture Audit'
+  inputs:
+    targetType: 'inline'
+    script: |
+      git clone https://dev.azure.com/tu-org/architecture-auditor/_git/architecture-auditor
+      cd architecture-auditor/architecture-auditor
+      pip install -r requirements.txt
+      python audit_runner_simple.py $(Build.SourcesDirectory)
 ```
 
 ### Pre-commit Hook
 ```bash
 #!/bin/sh
-audit-runner . || exit 1
+# .git/hooks/pre-commit
+cd path/to/architecture-auditor/architecture-auditor
+python audit_runner_simple.py $(git rev-parse --show-toplevel) || exit 1
 ```
 
 ## Tipos de Proyecto Soportados

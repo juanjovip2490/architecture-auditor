@@ -1,38 +1,72 @@
 @echo off
-REM Script de instalación para Windows
+chcp 65001 >nul
+echo ========================================
+echo  Architecture Auditor - Installation
+echo ========================================
+echo.
 
-echo 🏗️ Instalando Architecture Auditor...
-
-REM Verificar Python
+REM Check Python
 python --version >nul 2>&1
 if errorlevel 1 (
-    echo ❌ Python no está instalado o no está en PATH
+    echo ERROR: Python is not installed or not in PATH
+    echo Please install Python 3.7+ from https://python.org
     pause
     exit /b 1
 )
 
-REM Crear directorio de instalación
-set INSTALL_DIR=%USERPROFILE%\.architecture-auditor
-if not exist "%INSTALL_DIR%" mkdir "%INSTALL_DIR%"
+echo [OK] Python detected
+python --version
 
-REM Copiar archivos
-xcopy /E /I /Y . "%INSTALL_DIR%"
+REM Check pip
+pip --version >nul 2>&1
+if errorlevel 1 (
+    echo ERROR: pip is not available
+    echo Installing pip...
+    python -m ensurepip --upgrade
+)
 
-REM Crear scripts batch para ejecutar
-echo @echo off > "%INSTALL_DIR%\audit.bat"
-echo python "%INSTALL_DIR%\auditor.py" %%* >> "%INSTALL_DIR%\audit.bat"
+echo [OK] pip available
 
-echo @echo off > "%INSTALL_DIR%\audit-runner.bat"
-echo python "%INSTALL_DIR%\audit_runner.py" %%* >> "%INSTALL_DIR%\audit-runner.bat"
-
-REM Agregar al PATH (requiere reiniciar terminal)
-setx PATH "%PATH%;%INSTALL_DIR%" >nul
-
-echo ✅ Instalación completada!
+REM Install dependencies
 echo.
-echo Reinicia tu terminal y usa:
-echo   audit --project C:\ruta\del\proyecto
-echo   audit-runner C:\ruta\del\proyecto
+echo Installing dependencies...
+pip install -r requirements.txt
+
+if errorlevel 1 (
+    echo ERROR: Failed to install dependencies
+    pause
+    exit /b 1
+)
+
+echo [OK] Dependencies installed
+
+REM Verify installation
 echo.
-echo Para desinstalar: rmdir /s "%INSTALL_DIR%"
+echo Verifying installation...
+python auditor_simple.py --help >nul 2>&1
+if errorlevel 1 (
+    echo ERROR: Auditor is not working properly
+    pause
+    exit /b 1
+)
+
+echo [OK] Auditor working
+
+echo.
+echo ========================================
+echo  INSTALLATION COMPLETED
+echo ========================================
+echo.
+echo Basic usage:
+echo   python auditor_simple.py --project C:\path\to\project
+echo.
+echo Advanced usage:
+echo   python audit_runner_simple.py C:\path\to\project
+echo.
+echo Examples:
+echo   python audit_runner_simple.py . 
+echo   python audit_runner_simple.py C:\my-project web_app
+echo.
+echo For more info: README.md and EXAMPLES.md
+echo.
 pause
