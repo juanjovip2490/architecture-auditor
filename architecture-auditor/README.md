@@ -150,12 +150,12 @@ python src/architecture_auditor.py /ml-project --type data_science --verbose
 # Generate JSON report
 python src/architecture_auditor.py /project --output audit_report.json
 
-# Generate beautiful HTML report
-python src/report_generator.py audit_report.json professional_report.html
+# Generate professional HTML report
+python src/professional_report_generator.py audit_report.json professional_report.html
 
 # Complete workflow
 python src/architecture_auditor.py /path/to/project --output report.json
-python src/report_generator.py report.json beautiful_report.html
+python src/professional_report_generator.py report.json enterprise_report.html
 ```
 
 ---
