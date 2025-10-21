@@ -28,17 +28,17 @@ setup(
     description="Enterprise-Grade Architecture & Clean Code Analysis Tool",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    author="Juan José Vip",
+    author="Juan José Sáez",
     author_email="juanjovip2490@gmail.com",
     url="https://github.com/juanjovip2490/architecture-auditor",
     project_urls={
-        "Documentation": "https://github.com/juanjovip2490/architecture-auditor/blob/main/arquitecturas-software-clase1.html",
+        "Documentation": "https://github.com/juanjovip2490/architecture-auditor/blob/main/enterprise-architecture-patterns.html",
         "Source Code": "https://github.com/juanjovip2490/architecture-auditor",
         "Bug Tracker": "https://github.com/juanjovip2490/architecture-auditor/issues",
         "Clean Code Reference": "https://github.com/juanjovip2490/CLEAN-CODE-AND-ARCHITECTURES",
     },
     packages=find_packages(exclude=["tests*", "docs*"]),
-    py_modules=["intelligent_auditor"],
+    py_modules=["src.architecture_auditor", "src.report_generator"],
     install_requires=requirements,
     extras_require={
         "dev": [
@@ -59,12 +59,13 @@ setup(
     },
     entry_points={
         "console_scripts": [
-            "architecture-auditor=intelligent_auditor:main",
-            "audit-pro=intelligent_auditor:main",
+            "architecture-auditor=src.architecture_auditor:main",
+            "audit-pro=src.architecture_auditor:main",
+            "generate-report=src.report_generator:main",
         ],
     },
     classifiers=[
-        "Development Status :: 5 - Production/Stable",
+        "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
         "Intended Audience :: Information Technology",
         "Intended Audience :: System Administrators",

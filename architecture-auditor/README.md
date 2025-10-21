@@ -102,7 +102,7 @@ cd architecture-auditor/architecture-auditor
 pip install -r requirements.txt
 
 # Run your first audit
-python intelligent_auditor.py /path/to/your/project
+python src/architecture_auditor.py /path/to/your/project
 ```
 
 ### 🐳 Docker Deployment
@@ -117,7 +117,7 @@ docker run -v /path/to/project:/audit architecture-auditor
 
 ```bash
 # Advanced configuration for enterprise environments
-python intelligent_auditor.py /project --config enterprise.json --output-format dashboard
+python src/architecture_auditor.py /project --config enterprise.json --output-format dashboard
 ```
 
 ---
@@ -128,34 +128,34 @@ python intelligent_auditor.py /project --config enterprise.json --output-format 
 
 ```bash
 # Analyze any project instantly
-python intelligent_auditor.py /path/to/project
+python src/architecture_auditor.py /path/to/project
 ```
 
 ### 🎨 Project-Specific Analysis
 
 ```bash
 # Web Application
-python intelligent_auditor.py /webapp --type web_app --min-score 85
+python src/architecture_auditor.py /webapp --type web_app --min-score 85
 
 # Microservice
-python intelligent_auditor.py /service --type microservice --output report.json
+python src/architecture_auditor.py /service --type microservice --output report.json
 
 # Data Science Project
-python intelligent_auditor.py /ml-project --type data_science --verbose
+python src/architecture_auditor.py /ml-project --type data_science --verbose
 ```
 
 ### 📊 Professional Reporting
 
 ```bash
 # Generate JSON report
-python intelligent_auditor.py /project --output audit_report.json
+python src/architecture_auditor.py /project --output audit_report.json
 
 # Generate beautiful HTML report
-python html_report_generator.py audit_report.json professional_report.html
+python src/report_generator.py audit_report.json professional_report.html
 
 # Complete workflow
-python intelligent_auditor.py /path/to/project --output report.json
-python html_report_generator.py report.json beautiful_report.html
+python src/architecture_auditor.py /path/to/project --output report.json
+python src/report_generator.py report.json beautiful_report.html
 ```
 
 ---
@@ -256,7 +256,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Architecture Audit
         run: |
-          python intelligent_auditor.py . --min-score 80 --format ci-cd
+          python src/architecture_auditor.py . --min-score 80 --format ci-cd
           if [ $? -ne 0 ]; then exit 1; fi
 ```
 
@@ -269,7 +269,7 @@ jobs:
 Our auditor is built upon the foundational principles of:
 
 - **📖 [Clean Code - 10 Sections](https://github.com/juanjovip2490/CLEAN-CODE-AND-ARCHITECTURES)** - Robert C. Martin's complete methodology
-- **🏗️ [Enterprise Architecture Patterns](./enterprise-architecture-patterns.html)** - Professional architecture reference
+- **🏗️ [Enterprise Architecture Patterns](./docs/architecture-patterns.html)** - Professional architecture reference
 - **🎯 SOLID Principles** - Object-oriented design fundamentals
 - **🏛️ Design Patterns** - Gang of Four patterns and modern alternatives
 
@@ -434,7 +434,7 @@ Our auditor is built upon the foundational principles of:
 
 ### 💬 Community Support
 
-- **📖 [Documentation](./enterprise-architecture-patterns.html)**: Comprehensive guides and tutorials
+- **📖 [Documentation](./docs/architecture-patterns.html)**: Comprehensive guides and tutorials
 - **🐛 [Issue Tracker](https://github.com/juanjovip2490/architecture-auditor/issues)**: Bug reports and feature requests
 - **💡 [Discussions](https://github.com/juanjovip2490/architecture-auditor/discussions)**: Community Q&A
 
@@ -452,7 +452,7 @@ Our auditor is built upon the foundational principles of:
 **MIT License** - Free for commercial and personal use
 
 ```
-Copyright (c) 2024 Juan José Vip
+Copyright (c) 2025 Juan José Sáez
 Permission is hereby granted, free of charge, to any person obtaining a copy...
 ```
 
@@ -465,7 +465,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy...
 ### 📚 **Foundational Resources**
 
 [![Clean Code](https://img.shields.io/badge/Clean%20Code-Robert%20Martin-blue?style=for-the-badge)](https://github.com/juanjovip2490/CLEAN-CODE-AND-ARCHITECTURES)
-[![Architecture Guide](https://img.shields.io/badge/Enterprise%20Architecture-Professional%20Reference-green?style=for-the-badge)](./enterprise-architecture-patterns.html)
+[![Architecture Guide](https://img.shields.io/badge/Enterprise%20Architecture-Professional%20Reference-green?style=for-the-badge)](./docs/architecture-patterns.html)
 [![SOLID Principles](https://img.shields.io/badge/SOLID-Principles-orange?style=for-the-badge)](https://en.wikipedia.org/wiki/SOLID)
 
 ### 🏛️ **Architecture Patterns**
@@ -481,7 +481,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy...
 
 **🏗️ Architecture Auditor Pro - Elevating Code Quality to Enterprise Standards**
 
-*Made with ❤️ by developers, for developers*
+*Made with ❤️ by Juan José Sáez*
 
 [⭐ Star this repository](https://github.com/juanjovip2490/architecture-auditor) • [🐛 Report Issues](https://github.com/juanjovip2490/architecture-auditor/issues) • [💡 Request Features](https://github.com/juanjovip2490/architecture-auditor/discussions)
 
