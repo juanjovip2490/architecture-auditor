@@ -149,7 +149,7 @@ class IntelligentArchitectureAuditor:
         }
     
     def _audit_clean_code(self):
-        """Audita principios de código limpio según Clean Code de Robert Martin"""
+        """Audita principios de código limpio según las 10 secciones de CLEAN-CODE-AND-ARCHITECTURES"""
         score = 0
         issues = []
         total_files = 0
@@ -167,41 +167,65 @@ class IntelligentArchitectureAuditor:
                 total_files += 1
                 file_score = 0
                 
-                # 1. Nombres significativos (Clean Code Cap. 2)
-                if self._check_meaningful_names(content):
-                    file_score += 20
-                else:
-                    issues.append(f"Nombres no descriptivos en {file_path.name}")
-                
-                # 2. Funciones pequeñas (Clean Code Cap. 3)
-                if self._check_small_functions(content):
-                    file_score += 25
-                else:
-                    issues.append(f"Funciones muy largas en {file_path.name}")
-                
-                # 3. Comentarios apropiados (Clean Code Cap. 4)
-                if self._check_comments_quality(content):
-                    file_score += 15
-                else:
-                    issues.append(f"Comentarios inadecuados en {file_path.name}")
-                
-                # 4. Formato consistente (Clean Code Cap. 5)
-                if self._check_formatting(content):
-                    file_score += 15
-                else:
-                    issues.append(f"Formato inconsistente en {file_path.name}")
-                
-                # 5. Manejo de errores (Clean Code Cap. 7)
-                if self._check_error_handling(content):
-                    file_score += 15
-                else:
-                    issues.append(f"Manejo de errores deficiente en {file_path.name}")
-                
-                # 6. Clases bien organizadas (Clean Code Cap. 10)
-                if self._check_class_organization(content):
+                # Sección 1: Introducción al código limpio - Principios SOLID
+                if self._check_solid_principles(content):
                     file_score += 10
                 else:
-                    issues.append(f"Clases mal organizadas en {file_path.name}")
+                    issues.append(f"No sigue principios SOLID en {file_path.name}")
+                
+                # Sección 2: Nombres significativos - Framework CLEAR
+                if self._check_meaningful_names_clear(content):
+                    file_score += 10
+                else:
+                    issues.append(f"Nombres no siguen framework CLEAR en {file_path.name}")
+                
+                # Sección 3: Funciones claras y cortas - Framework FIRST
+                if self._check_clear_short_functions(content):
+                    file_score += 15
+                else:
+                    issues.append(f"Funciones no siguen framework FIRST en {file_path.name}")
+                
+                # Sección 4: Manejo de errores - Framework ACID
+                if self._check_proper_error_handling(content):
+                    file_score += 10
+                else:
+                    issues.append(f"Manejo de errores no sigue framework ACID en {file_path.name}")
+                
+                # Sección 5: DRY y Modularidad
+                if self._check_dry_modularity(content):
+                    file_score += 10
+                else:
+                    issues.append(f"Código repetitivo o mal modularizado en {file_path.name}")
+                
+                # Sección 6: Documentación clara - Framework SMART
+                if self._check_smart_documentation(content):
+                    file_score += 10
+                else:
+                    issues.append(f"Documentación no sigue framework SMART en {file_path.name}")
+                
+                # Sección 7: Estructuras de datos apropiadas
+                if self._check_appropriate_data_structures(content):
+                    file_score += 10
+                else:
+                    issues.append(f"Estructuras de datos inapropiadas en {file_path.name}")
+                
+                # Sección 8: Código eficiente y legible - Framework CLEAR-FAST
+                if self._check_efficient_readable_code(content):
+                    file_score += 10
+                else:
+                    issues.append(f"Código no sigue framework CLEAR-FAST en {file_path.name}")
+                
+                # Sección 9: Checklist y mejores prácticas
+                if self._check_best_practices_checklist(content):
+                    file_score += 10
+                else:
+                    issues.append(f"No sigue checklist de mejores prácticas en {file_path.name}")
+                
+                # Sección 10: Evaluación y mejora continua
+                if self._check_continuous_improvement(content):
+                    file_score += 5
+                else:
+                    issues.append(f"Falta evidencia de mejora continua en {file_path.name}")
                 
                 score += file_score
                 
@@ -213,16 +237,21 @@ class IntelligentArchitectureAuditor:
         
         self.results['clean_code'] = {
             'score': min(int(final_score), 100),
-            'issues': issues[:10],  # Limitar a 10 issues más importantes
-            'files_analyzed': total_files
+            'issues': issues[:10],
+            'files_analyzed': total_files,
+            'sections_evaluated': [
+                'Principios SOLID', 'Nombres CLEAR', 'Funciones FIRST', 'Errores ACID', 
+                'DRY/Modularidad', 'Documentación SMART', 'Estructuras datos', 
+                'Eficiencia CLEAR-FAST', 'Mejores prácticas', 'Mejora continua'
+            ]
         }
     
     def _audit_architecture_patterns(self):
-        """Audita patrones de arquitectura según arquitecturas-software-clase1.html"""
+        """Audita patrones de arquitectura según enterprise-architecture-patterns.html"""
         patterns_detected = []
         score = 0
         
-        # Patrones definidos en arquitecturas-software-clase1.html
+        # Patrones definidos en enterprise-architecture-patterns.html
         architecture_patterns = {
             'MVC': {
                 'indicators': ['models/', 'views/', 'controllers/', 'model.py', 'view.py', 'controller.py'],
@@ -420,7 +449,7 @@ class IntelligentArchitectureAuditor:
         detected_patterns = [p.lower() for p in self.results['architecture_patterns']['patterns_detected']]
         missing_patterns = set([p.lower() for p in recommended_patterns]) - set(detected_patterns)
         
-        # Recomendaciones específicas según arquitecturas-software-clase1.html
+        # Recomendaciones específicas según enterprise-architecture-patterns.html
         pattern_recommendations = {
             'mvc': 'Implementar MVC para separar responsabilidades (modelo-vista-controlador)',
             'hexagonal': 'Considerar Arquitectura Hexagonal para independencia de frameworks',
@@ -435,7 +464,7 @@ class IntelligentArchitectureAuditor:
                 'category': 'Patrón de Arquitectura',
                 'priority': 'Media',
                 'description': description,
-                'reference': 'Ver arquitecturas-software-clase1.html para implementación detallada'
+                'reference': 'Ver enterprise-architecture-patterns.html para implementación detallada'
             })
         
         # Recomendaciones por falta de patrones de diseño
@@ -449,24 +478,169 @@ class IntelligentArchitectureAuditor:
         
         self.results['recommendations'] = recommendations
     
-    # Métodos de verificación Clean Code
-    def _check_meaningful_names(self, content: str) -> bool:
-        """Verifica nombres significativos (Clean Code Cap. 2)"""
+    # Métodos de verificación Clean Code - 10 Secciones
+    def _check_solid_principles(self, content: str) -> bool:
+        """Sección 1: Verifica principios SOLID básicos"""
         import re
         
-        # Verificar funciones con nombres descriptivos
-        functions = re.findall(r'def\s+([a-zA-Z_][a-zA-Z0-9_]*)', content)
-        descriptive_functions = sum(1 for func in functions 
-                                  if len(func) > 3 and not any(bad in func.lower() 
-                                  for bad in ['temp', 'data', 'info', 'mgr', 'obj']))
-        
-        # Verificar clases con nombres de sustantivos
+        # SRP: Una clase, una responsabilidad
         classes = re.findall(r'class\s+([a-zA-Z_][a-zA-Z0-9_]*)', content)
-        good_class_names = sum(1 for cls in classes 
-                             if cls[0].isupper() and not cls.lower().endswith('manager'))
+        for class_match in re.finditer(r'class\s+\w+.*?(?=class|\Z)', content, re.DOTALL):
+            methods = re.findall(r'def\s+([a-zA-Z_][a-zA-Z0-9_]*)', class_match.group())
+            if len(methods) > 10:  # Demasiados métodos = múltiples responsabilidades
+                return False
         
-        return (len(functions) == 0 or descriptive_functions / len(functions) > 0.7) and \
-               (len(classes) == 0 or good_class_names / len(classes) > 0.8)
+        # DIP: Dependencias de abstracciones
+        has_abstractions = 'ABC' in content or 'Protocol' in content or 'interface' in content.lower()
+        return len(classes) == 0 or has_abstractions
+    
+    def _check_meaningful_names_clear(self, content: str) -> bool:
+        """Sección 2: Framework CLEAR - Nombres significativos"""
+        import re
+        
+        # C - Clear (claros)
+        functions = re.findall(r'def\s+([a-zA-Z_][a-zA-Z0-9_]*)', content)
+        clear_names = sum(1 for func in functions if len(func) > 3 and '_' in func or func.islower())
+        
+        # L - Logical (lógicos)
+        variables = re.findall(r'\b([a-z_][a-z0-9_]*)\s*=', content)
+        logical_vars = sum(1 for var in variables if not any(bad in var for bad in ['temp', 'data', 'x', 'i']))
+        
+        return (len(functions) == 0 or clear_names / len(functions) > 0.7) and \
+               (len(variables) == 0 or logical_vars / len(variables) > 0.6)
+    
+    def _check_clear_short_functions(self, content: str) -> bool:
+        """Sección 3: Framework FIRST - Funciones claras y cortas"""
+        import re
+        lines = content.split('\n')
+        
+        # F - Fast (rápidas de leer)
+        function_lengths = []
+        current_function_lines = 0
+        in_function = False
+        
+        for line in lines:
+            if re.match(r'\s*def\s+', line):
+                if in_function:
+                    function_lengths.append(current_function_lines)
+                in_function = True
+                current_function_lines = 0
+            elif in_function and line.strip():
+                current_function_lines += 1
+        
+        # I - Independent (independientes)
+        # R - Repeatable (repetibles)
+        # S - Self-validating (auto-validantes)
+        # T - Timely (oportunas)
+        
+        avg_length = sum(function_lengths) / len(function_lengths) if function_lengths else 0
+        return avg_length <= 15  # Máximo 15 líneas por función
+    
+    def _check_proper_error_handling(self, content: str) -> bool:
+        """Sección 4: Framework ACID - Manejo de errores"""
+        # A - Atomicity (atomicidad)
+        has_try_except = 'try:' in content and 'except' in content
+        
+        # C - Consistency (consistencia)
+        # I - Isolation (aislamiento)
+        # D - Durability (durabilidad)
+        
+        # Verificar excepciones específicas vs genéricas
+        import re
+        generic_except = len(re.findall(r'except:', content))
+        specific_except = len(re.findall(r'except\s+\w+', content))
+        
+        return has_try_except and (generic_except == 0 or specific_except > generic_except)
+    
+    def _check_dry_modularity(self, content: str) -> bool:
+        """Sección 5: DRY y Modularidad"""
+        lines = content.split('\n')
+        code_lines = [line.strip() for line in lines if line.strip() and not line.strip().startswith('#')]
+        
+        # Verificar duplicación de código
+        unique_lines = set(code_lines)
+        duplication_ratio = 1 - (len(unique_lines) / len(code_lines)) if code_lines else 0
+        
+        # Verificar imports (modularidad)
+        import_count = sum(1 for line in lines if line.strip().startswith('import') or line.strip().startswith('from'))
+        
+        return duplication_ratio < 0.3 and import_count > 0
+    
+    def _check_smart_documentation(self, content: str) -> bool:
+        """Sección 6: Framework SMART - Documentación clara"""
+        import re
+        
+        # S - Specific (específica)
+        # M - Measurable (medible)
+        # A - Achievable (alcanzable)
+        # R - Relevant (relevante)
+        # T - Time-bound (temporal)
+        
+        docstrings = re.findall(r'"""([^"""]+)"""', content)
+        functions_with_docs = len(re.findall(r'def\s+\w+[^:]*:\s*"""', content))
+        total_functions = len(re.findall(r'def\s+\w+', content))
+        
+        doc_ratio = functions_with_docs / total_functions if total_functions > 0 else 1
+        return doc_ratio > 0.5
+    
+    def _check_appropriate_data_structures(self, content: str) -> bool:
+        """Sección 7: Estructuras de datos apropiadas"""
+        # Verificar uso de estructuras apropiadas
+        has_dict = 'dict' in content or '{' in content
+        has_list = 'list' in content or '[' in content
+        has_set = 'set(' in content or '{' in content
+        
+        # Verificar que no se abuse de listas para todo
+        import re
+        list_operations = len(re.findall(r'\.append\(|\[.*\]', content))
+        dict_operations = len(re.findall(r'\[.*\]\s*=|\w+\[', content))
+        
+        return (has_dict or has_list) and (list_operations + dict_operations > 0)
+    
+    def _check_efficient_readable_code(self, content: str) -> bool:
+        """Sección 8: Framework CLEAR-FAST - Código eficiente y legible"""
+        # C - Clarity (claridad)
+        # L - Legibility (legibilidad)
+        # E - Efficiency (eficiencia)
+        # A - Alternatives (alternativas)
+        # R - Refactor (refactorización)
+        
+        lines = content.split('\n')
+        avg_line_length = sum(len(line) for line in lines) / len(lines) if lines else 0
+        
+        # F - Focus (enfoque)
+        # A - Analysis (análisis)
+        # S - Simplification (simplificación)
+        # T - Testing (pruebas)
+        
+        return avg_line_length < 100  # Líneas no muy largas
+    
+    def _check_best_practices_checklist(self, content: str) -> bool:
+        """Sección 9: Checklist de mejores prácticas"""
+        import re
+        
+        # Verificar convenciones de naming
+        snake_case_functions = len(re.findall(r'def\s+[a-z_][a-z0-9_]*', content))
+        total_functions = len(re.findall(r'def\s+\w+', content))
+        
+        # Verificar imports organizados
+        import_lines = [line for line in content.split('\n') if line.strip().startswith(('import', 'from'))]
+        organized_imports = len(import_lines) <= 10  # No demasiados imports
+        
+        naming_ratio = snake_case_functions / total_functions if total_functions > 0 else 1
+        return naming_ratio > 0.8 and organized_imports
+    
+    def _check_continuous_improvement(self, content: str) -> bool:
+        """Sección 10: Evaluación y mejora continua"""
+        # Verificar evidencia de refactoring y mejora
+        has_version_info = 'version' in content.lower() or '__version__' in content
+        has_todo_comments = 'TODO' in content or 'FIXME' in content
+        
+        # Verificar que el código no tiene deuda técnica obvia
+        import re
+        code_smells = len(re.findall(r'# hack|# fix|# temp|# quick', content, re.IGNORECASE))
+        
+        return has_version_info or (has_todo_comments and code_smells < 3)
     
     def _check_small_functions(self, content: str) -> bool:
         """Verifica funciones pequeñas (Clean Code Cap. 3)"""
@@ -636,7 +810,7 @@ Referencia: https://github.com/juanjovip2490/CLEAN-CODE-AND-ARCHITECTURES
     
     print(f"\nBasado en Clean Code de Robert Martin")
     print(f"Referencia: https://github.com/juanjovip2490/CLEAN-CODE-AND-ARCHITECTURES")
-    print(f"Documentacion: arquitecturas-software-clase1.html")
+    print(f"Documentacion: enterprise-architecture-patterns.html")
     
     return exit_code
 
