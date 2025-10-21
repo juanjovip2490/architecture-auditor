@@ -1,2 +1,37 @@
-pathlib2>=2.3.0
-argparse>=1.4.0
+# Core dependencies for Architecture Auditor Pro
+# These are the minimal requirements for basic functionality
+
+# Standard library backports (only needed for Python < 3.8)
+pathlib2>=2.3.0; python_version < '3.8'
+
+# JSON handling (built-in for Python 3.8+)
+# No external dependency needed
+
+# Argument parsing (built-in for Python 3.8+)
+# No external dependency needed
+
+# Optional dependencies for enhanced functionality
+# Uncomment if you need advanced features:
+
+# For enterprise reporting
+# jinja2>=3.0.0
+# pyyaml>=5.4.0
+
+# For data analysis and visualization
+# pandas>=1.3.0
+# matplotlib>=3.3.0
+
+# For web-based reporting
+# flask>=2.0.0
+
+# For advanced pattern matching
+# regex>=2021.0.0
+
+# Development dependencies (install with: pip install -e .[dev])
+# pytest>=6.0
+# pytest-cov>=2.0
+# black>=21.0
+# isort>=5.0
+# flake8>=3.8
+# mypy>=0.800
+# pylint>=2.6
