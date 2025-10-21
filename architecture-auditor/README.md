@@ -268,42 +268,119 @@ jobs:
 
 Our auditor is built upon the foundational principles of:
 
-- **📖 [Clean Code](https://github.com/juanjovip2490/CLEAN-CODE-AND-ARCHITECTURES)** - Robert C. Martin's masterpiece
-- **🏗️ [arquitecturas-software-clase1.html](./arquitecturas-software-clase1.html)** - Comprehensive architecture guide
+- **📖 [Clean Code - 10 Sections](https://github.com/juanjovip2490/CLEAN-CODE-AND-ARCHITECTURES)** - Robert C. Martin's complete methodology
+- **🏗️ [Enterprise Architecture Patterns](./enterprise-architecture-patterns.html)** - Professional architecture reference
 - **🎯 SOLID Principles** - Object-oriented design fundamentals
 - **🏛️ Design Patterns** - Gang of Four patterns and modern alternatives
 
-### 🔍 Clean Code Analysis
+### 🔍 Comprehensive Clean Code Analysis - 10 Sections
 
 <details>
-<summary><b>📝 Naming Conventions (Chapter 2)</b></summary>
+<summary><b>🎯 Section 1: SOLID Principles Foundation</b></summary>
 
-- ✅ **Intention-Revealing Names**: Variables and functions clearly express their purpose
-- ✅ **Avoid Disinformation**: No misleading or confusing names
-- ✅ **Meaningful Distinctions**: Clear differences between similar concepts
-- ✅ **Pronounceable Names**: Easy to discuss in team communications
-- ✅ **Searchable Names**: Facilitate code navigation and maintenance
+- ✅ **Single Responsibility**: Each class has one reason to change
+- ✅ **Open/Closed**: Open for extension, closed for modification
+- ✅ **Liskov Substitution**: Derived classes must be substitutable
+- ✅ **Interface Segregation**: Many specific interfaces vs one general
+- ✅ **Dependency Inversion**: Depend on abstractions, not concretions
 
 </details>
 
 <details>
-<summary><b>⚡ Functions (Chapter 3)</b></summary>
+<summary><b>📝 Section 2: Meaningful Names (Framework CLEAR)</b></summary>
 
-- ✅ **Small Functions**: Maximum 20 lines (industry best practice)
-- ✅ **Single Responsibility**: Each function does one thing well
-- ✅ **Descriptive Names**: Function names explain their behavior
-- ✅ **Minimal Arguments**: Maximum 3 parameters for optimal readability
-- ✅ **No Side Effects**: Predictable behavior without hidden actions
+- ✅ **C**lear: Names reveal intention without ambiguity
+- ✅ **L**ogical: Follow consistent naming patterns
+- ✅ **E**xpressive: Communicate purpose effectively
+- ✅ **A**ppropriate: Match domain and context
+- ✅ **R**eadable: Easy to pronounce and remember
 
 </details>
 
 <details>
-<summary><b>💬 Comments (Chapter 4)</b></summary>
+<summary><b>⚡ Section 3: Functions (Framework FIRST)</b></summary>
 
-- ✅ **Express Intent in Code**: Prefer self-documenting code
-- ✅ **Explain Why, Not What**: Comments provide context and reasoning
-- ✅ **No Commented Code**: Remove dead code completely
-- ✅ **Optimal Ratio**: 10-30% comment-to-code ratio
+- ✅ **F**ast: Quick to read and understand (≤20 lines)
+- ✅ **I**ndependent: No hidden dependencies
+- ✅ **R**epeatable: Consistent behavior every time
+- ✅ **S**elf-validating: Clear success/failure indication
+- ✅ **T**imely: Do one thing at the right time
+
+</details>
+
+<details>
+<summary><b>🛡️ Section 4: Error Handling (Framework ACID)</b></summary>
+
+- ✅ **A**tomicity: Operations complete fully or not at all
+- ✅ **C**onsistency: Maintain system integrity
+- ✅ **I**solation: Errors don't affect other operations
+- ✅ **D**urability: Error states are properly handled
+
+</details>
+
+<details>
+<summary><b>🔄 Section 5: DRY & Modularization</b></summary>
+
+- ✅ **Don't Repeat Yourself**: Eliminate code duplication
+- ✅ **Modular Design**: Logical separation of concerns
+- ✅ **Reusable Components**: Build for reusability
+- ✅ **Clear Dependencies**: Explicit module relationships
+
+</details>
+
+<details>
+<summary><b>📚 Section 6: Documentation (Framework SMART)</b></summary>
+
+- ✅ **S**pecific: Precise and detailed information
+- ✅ **M**easurable: Quantifiable outcomes
+- ✅ **A**chievable: Realistic and attainable
+- ✅ **R**elevant: Pertinent to the context
+- ✅ **T**ime-bound: Current and up-to-date
+
+</details>
+
+<details>
+<summary><b>🏗️ Section 7: Data Structures</b></summary>
+
+- ✅ **Appropriate Types**: Right data structure for the job
+- ✅ **Efficient Access**: Optimal performance characteristics
+- ✅ **Clear Relationships**: Obvious data connections
+- ✅ **Minimal Complexity**: Simplest structure that works
+
+</details>
+
+<details>
+<summary><b>⚡ Section 8: Efficiency (Framework CLEAR-FAST)</b></summary>
+
+- ✅ **C**larity over premature optimization
+- ✅ **L**egible code that performs well
+- ✅ **E**fficient algorithms and data structures
+- ✅ **A**nalysis-driven optimization decisions
+- ✅ **R**efactoring for performance when needed
+- ✅ **F**ocus on bottlenecks, not micro-optimizations
+- ✅ **A**lternatives evaluation before implementation
+- ✅ **S**implification through better design
+- ✅ **T**esting performance improvements
+
+</details>
+
+<details>
+<summary><b>✅ Section 9: Best Practices Checklist</b></summary>
+
+- ✅ **Code Reviews**: Systematic peer review process
+- ✅ **Automated Tools**: Linting, formatting, static analysis
+- ✅ **Testing Strategy**: Unit, integration, and system tests
+- ✅ **Version Control**: Proper branching and commit practices
+
+</details>
+
+<details>
+<summary><b>📈 Section 10: Continuous Improvement</b></summary>
+
+- ✅ **Regular Refactoring**: Ongoing code improvement
+- ✅ **Metrics Tracking**: Quality measurements over time
+- ✅ **Team Learning**: Knowledge sharing and growth
+- ✅ **Process Evolution**: Adapting practices based on results
 
 </details>
 
@@ -357,7 +434,7 @@ Our auditor is built upon the foundational principles of:
 
 ### 💬 Community Support
 
-- **📖 [Documentation](./arquitecturas-software-clase1.html)**: Comprehensive guides and tutorials
+- **📖 [Documentation](./enterprise-architecture-patterns.html)**: Comprehensive guides and tutorials
 - **🐛 [Issue Tracker](https://github.com/juanjovip2490/architecture-auditor/issues)**: Bug reports and feature requests
 - **💡 [Discussions](https://github.com/juanjovip2490/architecture-auditor/discussions)**: Community Q&A
 
@@ -388,7 +465,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy...
 ### 📚 **Foundational Resources**
 
 [![Clean Code](https://img.shields.io/badge/Clean%20Code-Robert%20Martin-blue?style=for-the-badge)](https://github.com/juanjovip2490/CLEAN-CODE-AND-ARCHITECTURES)
-[![Architecture Guide](https://img.shields.io/badge/Architecture%20Guide-HTML%20Documentation-green?style=for-the-badge)](./arquitecturas-software-clase1.html)
+[![Architecture Guide](https://img.shields.io/badge/Enterprise%20Architecture-Professional%20Reference-green?style=for-the-badge)](./enterprise-architecture-patterns.html)
 [![SOLID Principles](https://img.shields.io/badge/SOLID-Principles-orange?style=for-the-badge)](https://en.wikipedia.org/wiki/SOLID)
 
 ### 🏛️ **Architecture Patterns**
