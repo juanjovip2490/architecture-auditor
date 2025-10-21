@@ -1,0 +1,63 @@
+{
+  "project": ".",
+  "timestamp": "2025-10-21T12:19:25.920564",
+  "project_type": "web_app",
+  "total_score": 66.25,
+  "weighted_score": 67.2,
+  "structure": {
+    "score": 100,
+    "issues": [
+      "Falta directorio específico: static/"
+    ],
+    "recommendations": [
+      "Crear static/ según tipo web_app"
+    ]
+  },
+  "clean_code": {
+    "score": 85,
+    "issues": [
+      "Comentarios inadecuados en generate_html_report.py",
+      "Comentarios inadecuados en html_report_generator.py",
+      "Formato inconsistente en intelligent_auditor.py",
+      "Comentarios inadecuados en setup.py",
+      "Formato inconsistente en intelligent_auditor.py"
+    ],
+    "files_analyzed": 5
+  },
+  "architecture_patterns": {
+    "patterns_detected": [],
+    "score": 0,
+    "details": {}
+  },
+  "design_patterns": {
+    "patterns_found": [
+      "Singleton (Creacionales)",
+      "Factory (Creacionales)",
+      "Adapter (Estructurales)",
+      "Decorator (Estructurales)",
+      "Observer (Comportamiento)",
+      "Strategy (Comportamiento)"
+    ],
+    "score": 80
+  },
+  "recommendations": [
+    {
+      "category": "Patrón de Arquitectura",
+      "priority": "Media",
+      "description": "Implementar patrón Dependency Injection",
+      "reference": "Ver arquitecturas-software-clase1.html para implementación detallada"
+    },
+    {
+      "category": "Patrón de Arquitectura",
+      "priority": "Media",
+      "description": "Implementar Repository Pattern para abstracción de datos",
+      "reference": "Ver arquitecturas-software-clase1.html para implementación detallada"
+    },
+    {
+      "category": "Patrón de Arquitectura",
+      "priority": "Media",
+      "description": "Implementar MVC para separar responsabilidades (modelo-vista-controlador)",
+      "reference": "Ver arquitecturas-software-clase1.html para implementación detallada"
+    }
+  ]
+}

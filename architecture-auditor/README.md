@@ -54,7 +54,8 @@ Transform your development process with **AI-powered architecture analysis** tha
 
 ### 📊 **Professional Reporting**
 - **Executive Dashboards**
-- **Detailed JSON/HTML Reports**
+- **Beautiful HTML Reports**
+- **Detailed JSON Reports**
 - **Trend Analysis**
 - **ROI Calculations**
 - **Compliance Scoring**
@@ -146,8 +147,15 @@ python intelligent_auditor.py /ml-project --type data_science --verbose
 ### 📊 Professional Reporting
 
 ```bash
-# Generate comprehensive reports
-python intelligent_auditor.py /project --output audit_report.json --format professional
+# Generate JSON report
+python intelligent_auditor.py /project --output audit_report.json
+
+# Generate beautiful HTML report
+python html_report_generator.py audit_report.json professional_report.html
+
+# Complete workflow
+python intelligent_auditor.py /path/to/project --output report.json
+python html_report_generator.py report.json beautiful_report.html
 ```
 
 ---

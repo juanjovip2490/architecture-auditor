@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Auditoría Inteligente de Arquitectura y Código Limpio
 Sistema completo basado en principios de Clean Code de Robert Martin
